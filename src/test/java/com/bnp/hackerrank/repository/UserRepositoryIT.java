@@ -34,7 +34,7 @@ public class UserRepositoryIT {
         User user = new User(Long.valueOf(1));
         userRepository.save(user);
         //When
-        Interest interest = new Interest(new InterestId(CASH, APAC, FRENCH));
+        Interest interest = new Interest(new InterestId(CASH, APAC, FRENCH), "Interest name");
         user.setInterest(interest);
         userRepository.save(user);
         //Then
