@@ -1,6 +1,6 @@
 package com.bnp.hackerrank.domain;
 
-public enum TYPE {
+public enum InterestType {
     CREDIT,
     CASH
 }

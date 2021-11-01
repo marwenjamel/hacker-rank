@@ -12,7 +12,10 @@ import java.io.Serializable;
 @Data
 @Embeddable
 public class InterestId implements Serializable {
-    private String type;
-    private String region;
-    private String language;
+
+    private InterestType type;
+    private InterestRegion region;
+    private InterestLanguage language;
+
 }
+

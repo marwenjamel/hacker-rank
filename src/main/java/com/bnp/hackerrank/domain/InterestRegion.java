@@ -1,2 +1,6 @@
-package com.bnp.hackerrank.domain;public enum InterestRegion {
+package com.bnp.hackerrank.domain;
+
+public enum InterestRegion {
+    EMEA,
+    APAC
 }

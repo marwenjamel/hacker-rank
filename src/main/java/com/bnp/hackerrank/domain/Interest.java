@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Data
 @Entity
-@IdClass(InterestId.class)
 @Table(name = "INTEREST")
 public class Interest {
 
