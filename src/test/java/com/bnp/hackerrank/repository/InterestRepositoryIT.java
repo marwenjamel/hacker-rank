@@ -12,6 +12,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static com.bnp.hackerrank.domain.InterestLanguage.ENGLISH;
 import static com.bnp.hackerrank.domain.InterestLanguage.FRENCH;
 import static com.bnp.hackerrank.domain.InterestRegion.APAC;
@@ -62,5 +64,30 @@ public class InterestRepositoryIT {
             interestRepository.save(interest1);
             interestRepository.flush();
         });
+    }
+
+    @Test
+    public void should_fetch_interest_by_name() {
+        //Given
+        Interest interest = new Interest(new InterestId(CREDIT, EMEA, FRENCH), "Interest name");
+        Interest interest1 = new Interest(new InterestId(CASH, APAC, FRENCH), "Interest name 1");
+        Interest interest2 = new Interest(new InterestId(CREDIT, APAC, FRENCH), "Interest name 2");
+        Interest interest3 = new Interest(new InterestId(CASH, EMEA, FRENCH), "Interest name 3");
+        Interest interest4 = new Interest(new InterestId(CREDIT, EMEA, ENGLISH), "Interest name 4");
+        Interest interest5 = new Interest(new InterestId(CASH, APAC, ENGLISH), "Interest name 5");
+        Interest interest6 = new Interest(new InterestId(CREDIT, APAC, ENGLISH), "Interest name 6");
+        Interest interest7 = new Interest(new InterestId(CASH, EMEA, ENGLISH), "Interest name 7");
+        interestRepository.save(interest);
+        interestRepository.save(interest1);
+        interestRepository.save(interest2);
+        interestRepository.save(interest3);
+        interestRepository.save(interest4);
+        interestRepository.save(interest5);
+        interestRepository.save(interest6);
+        interestRepository.save(interest7);
+        //When
+        List<Interest> interests = interestRepository.findByName("Interest name 6");
+        //Then
+        assertEquals(APAC, interests.get(0).getInterestId().getRegion());
     }
 }
